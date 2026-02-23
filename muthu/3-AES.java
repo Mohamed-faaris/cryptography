@@ -20,3 +20,17 @@ class AES {
         System.out.println("Decrypted Text: " + new String(dec));
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: Hello World
+// Output:
+//   Decrypted Text: Hello World
+//
+// Input: Secret Message
+// Output:
+//   Decrypted Text: Secret Message
+//
+// Input: Cryptography
+// Output:
+//   Decrypted Text: Cryptography

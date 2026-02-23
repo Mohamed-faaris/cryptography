@@ -29,3 +29,19 @@ class PlayfairCipher {
                 key[p1[0]][p2[1]] + key[p2[0]][p1[1]]);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: MO
+// ==============
+
+// Output:
+//   Encrypted Text: OM
+//
+// Input: HE
+// Output:
+//   Encrypted Text: EH
+//
+// Input: LL
+// Output:
+//   Encrypted Text: LL

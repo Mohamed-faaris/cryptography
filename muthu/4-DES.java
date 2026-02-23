@@ -20,3 +20,17 @@ class DES {
         System.out.println("Decrypted Text: " + new String(dec));
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: SecretMsg
+// Output:
+//   Decrypted Text: SecretMsg
+//
+// Input: MyData
+// Output:
+//   Decrypted Text: MyData
+//
+// Input: Test123
+// Output:
+//   Decrypted Text: Test123

@@ -17,3 +17,17 @@ class HillCipher {
         System.out.println("Encrypted Text: " + c1 + c2);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: HI
+// Output:
+//   Encrypted Text: TC
+//
+// Input: AT
+// Output:
+//   Encrypted Text: AY
+//
+// Input: GO
+// Output:
+//   Encrypted Text: QX

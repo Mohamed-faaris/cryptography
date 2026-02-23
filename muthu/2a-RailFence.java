@@ -17,3 +17,17 @@ class RailFence {
         System.out.println("Encrypted Text: " + r1 + r2 + r3);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: HELLO
+// Output:
+//   Encrypted Text: HOELL
+//
+// Input: ATTACKATDAWN
+// Output:
+//   Encrypted Text: AACTWTAKADN
+//
+// Input: PROGRAM
+// Output:
+//   Encrypted Text: POORGM

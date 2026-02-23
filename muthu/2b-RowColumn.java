@@ -19,3 +19,17 @@ class RowColumn {
                 System.out.print(mat[i][j]);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: ATTACK
+// Output:
+//   Encrypted Text: AATCTK
+//
+// Input: SECRET
+// Output:
+//   Encrypted Text: SETCER
+//
+// Input: IMPORT
+// Output:
+//   Encrypted Text: IPMOTR
