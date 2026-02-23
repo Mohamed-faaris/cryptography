@@ -54,3 +54,15 @@ class RowColumn {
         System.out.println("Decrypted Text: " + dec);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: ATTACK, Rows: 2, Cols: 3
+// Output:
+//   Encrypted Text: AATCTK
+//   Decrypted Text: ATTACK
+//
+// Input: SECRET, Rows: 2, Cols: 3
+// Output:
+//   Encrypted Text: SETCER
+//   Decrypted Text: SECRET

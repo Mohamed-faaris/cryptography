@@ -49,3 +49,15 @@ class RailFence {
         System.out.println("Decrypted Text: " + dec);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: HELLO, Rails: 3
+// Output:
+//   Encrypted Text: HOLEL
+//   Decrypted Text: HELLO
+//
+// Input: ATTACKATDAWN, Rails: 4
+// Output:
+//   Encrypted Text: AACTWTAKADN
+//   Decrypted Text: ATTACKATDAWN

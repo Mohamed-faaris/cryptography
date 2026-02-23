@@ -38,3 +38,15 @@ class AES {
         return sb.toString();
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: Message: Hello World, Key: mysecretkey12345
+// Output:
+//   Encrypted (hex): [varies]
+//   Decrypted Text: Hello World
+//
+// Input: Message: Secret Data, Key: 1234567890123456
+// Output:
+//   Encrypted (hex): [varies]
+//   Decrypted Text: Secret Data

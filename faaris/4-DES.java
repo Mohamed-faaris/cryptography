@@ -38,3 +38,15 @@ class DES {
         return sb.toString();
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: Message: SecretMsg, Key: mykey123
+// Output:
+//   Encrypted (hex): [varies]
+//   Decrypted Text: SecretMsg
+//
+// Input: Message: Hello, Key: 12345678
+// Output:
+//   Encrypted (hex): [varies]
+//   Decrypted Text: Hello

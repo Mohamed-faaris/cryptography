@@ -35,3 +35,15 @@ class VigenereCipher {
         System.out.println("Decrypted Text: " + dec);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: HELLO, Key: KEY
+// Output:
+//   Encrypted Text: RIJVS
+//   Decrypted Text: HELLO
+//
+// Input: ATTACK, Key: LEMON
+// Output:
+//   Encrypted Text: LXFOPVEFRNHR
+//   Decrypted Text: ATTACK

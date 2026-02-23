@@ -128,3 +128,15 @@ class HillCipher {
         System.out.println("Decrypted Text: " + decrypted);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: Size: 2, Matrix: 3 3 / 2 5, Text: HI
+// Output:
+//   Encrypted Text: TC
+//   Decrypted Text: HI
+//
+// Input: Size: 2, Matrix: 4 7 / 5 3, Text: HELLO
+// Output:
+//   Encrypted Text: JEBWXWX
+//   Decrypted Text: HELLO
