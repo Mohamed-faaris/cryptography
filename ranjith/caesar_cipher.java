@@ -12,7 +12,6 @@ public class caesar_cipher {
     }
    public static String encrypt(String text, int shift) {
         StringBuilder result = new StringBuilder();
-
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
             if (Character.isUpperCase(ch)) {
