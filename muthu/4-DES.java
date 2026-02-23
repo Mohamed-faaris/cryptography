@@ -2,7 +2,7 @@ import java.util.Scanner;
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 
-class DES {
+class AES {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Message: ");

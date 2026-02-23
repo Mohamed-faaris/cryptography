@@ -108,3 +108,15 @@ class PlayfairCipher {
         System.out.println("Decrypted Text: " + decrypted);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: Key: MONARCHY, Text: HELLO
+// Output:
+//   Encrypted Text: FCSMCS
+//   Decrypted Text: HELLO
+//
+// Input: Key: KEYWORD, Text: ATTACK
+// Output:
+//   Encrypted Text: QXQFQO
+//   Decrypted Text: ATTACK

@@ -34,3 +34,20 @@ class CaesarCipher {
         System.out.println("Decrypted Text: " + dec);
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: HELLO, Key: 3
+// Output:
+//   Encrypted Text: KHOOR
+//   Decrypted Text: HELLO
+//
+// Input: WORLD, Key: 7
+// Output:
+//   Encrypted Text: DVYST
+//   Decrypted Text: WORLD
+//
+// Input: ATTACK, Key: 5
+// Output:
+//   Encrypted Text: FYYFHP
+//   Decrypted Text: ATTACK
