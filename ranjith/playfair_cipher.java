@@ -39,3 +39,14 @@ public class playfair_cipher {
         scanner.close();
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: key: MONARCHY
+// Output:
+//   Playfair Matrix:
+//   M O N A R 
+//   C H Y B D 
+//   E F G I K 
+//   L P Q S T 
+//   U V W X Z

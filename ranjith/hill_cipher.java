@@ -19,3 +19,13 @@ for (int i = 0; i < text.length(); i += 2) {
         sc.close();
    }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: Plaintext: HI
+// Output:
+//   Ciphertext: TC
+//
+// Input: Plaintext: AT
+// Output:
+//   Ciphertext: AY

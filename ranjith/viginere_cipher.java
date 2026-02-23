@@ -34,3 +34,13 @@ public class viginere_cipher {
         return res.toString();
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: Plaintext: HELLO, Key: KEY
+// Output:
+//   Ciphertext: RIJVS
+//
+// Input: Plaintext: ATTACK, Key: LEMON
+// Output:
+//   Ciphertext: LXFOPVEFRNHR

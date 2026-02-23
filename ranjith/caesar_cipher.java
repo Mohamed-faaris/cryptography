@@ -27,3 +27,13 @@ public class caesar_cipher {
         return result.toString();
     }
 }
+
+// SAMPLE OUTPUTS:
+// ==============
+// Input: plaintext: HELLO, shift: 3
+// Output:
+//   Ciphertext: KHOOR
+//
+// Input: plaintext: ATTACK, shift: 5
+// Output:
+//   Ciphertext: FYYFHP
