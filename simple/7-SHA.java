@@ -8,14 +8,7 @@ class SHA {
         System.out.print("Enter message: ");
         String msg = sc.nextLine();
 
-        System.out.println("\n1. SHA-256");
-        System.out.println("2. SHA-1");
-        System.out.print("Choose: ");
-        int ch = sc.nextInt();
-
-        String algo = (ch == 1) ? "SHA-256" : "SHA-1";
-
-        MessageDigest md = MessageDigest.getInstance(algo);
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hash = md.digest(msg.getBytes());
 
         System.out.print("\nHash: ");

@@ -25,7 +25,7 @@ class RSA {
         System.out.println("e = " + e);
         System.out.println("d = " + d);
 
-        System.out.print("\nEnter message: ");
+        System.out.print("\nEnter message (number): ");
         BigInteger msg = sc.nextBigInteger();
 
         BigInteger enc = msg.modPow(e, n);
