@@ -420,7 +420,7 @@ Output: Encrypted: AATCTK
 ### Code
 
 ```java
-import java.util.Scanner;
+import java.util.*;
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -441,14 +441,9 @@ class AES {
         c.init(Cipher.DECRYPT_MODE, key);
         byte[] dec = c.doFinal(enc);
 
-        System.out.println("Encrypted (hex): " + bytesToHex(enc));
+        System.out.println("Encrypted (hex): " + HexFormat.of().formatHex(enc));
         System.out.println("Decrypted: " + new String(dec));
         sc.close();
-    }
-    static String bytesToHex(byte[] b) {
-        StringBuilder sb = new StringBuilder();
-        for (byte val : b) sb.append(String.format("%02x", val));
-        return sb.toString();
     }
 }
 ```
@@ -481,7 +476,7 @@ Output: Encrypted (hex): a8b9c7d4e5f6a1b2c3d4e5f6a7b8c9d0
 ### Code
 
 ```java
-import java.util.Scanner;
+import java.util.*;
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -502,14 +497,9 @@ class DES {
         c.init(Cipher.DECRYPT_MODE, key);
         byte[] dec = c.doFinal(enc);
 
-        System.out.println("Encrypted (hex): " + bytesToHex(enc));
+        System.out.println("Encrypted (hex): " + HexFormat.of().formatHex(enc));
         System.out.println("Decrypted: " + new String(dec));
         sc.close();
-    }
-    static String bytesToHex(byte[] b) {
-        StringBuilder sb = new StringBuilder();
-        for (byte val : b) sb.append(String.format("%02x", val));
-        return sb.toString();
     }
 }
 ```
@@ -598,9 +588,9 @@ Output: Public Key A: 8, Public Key B: 19, Secret: 2
 ### Code
 
 ```java
-import java.util.Scanner;
+import java.util.*;
 import java.security.*;
-import javax.crypto.Cipher;
+import javax.crypto.*;
 
 class RSA {
     public static void main(String[] args) throws Exception {
@@ -620,16 +610,10 @@ class RSA {
         cipher.init(Cipher.DECRYPT_MODE, kp.getPrivate());
         byte[] dec = cipher.doFinal(enc);
 
-        System.out.println("Encrypted: " + bytesToHex(enc));
+        System.out.println("Encrypted: " + HexFormat.of().formatHex(enc));
         System.out.println("Decrypted: " + new String(dec));
 
         sc.close();
-    }
-
-    static String bytesToHex(byte[] b) {
-        StringBuilder sb = new StringBuilder();
-        for (byte val : b) sb.append(String.format("%02x", val));
-        return sb.toString();
     }
 }
 ```
