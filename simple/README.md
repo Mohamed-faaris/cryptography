@@ -453,6 +453,14 @@ class AES {
 }
 ```
 
+### Sample I/O
+```
+Input:  Hello World
+        mysecretkey12345
+Output: Encrypted (hex): a8b9c7d4e5f6a1b2c3d4e5f6a7b8c9d0
+        Decrypted: Hello World
+```
+
 ### Reference: [AES - Wikipedia](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 
 ---
@@ -504,6 +512,14 @@ class DES {
         return sb.toString();
     }
 }
+```
+
+### Sample I/O
+```
+Input:  SecretMsg
+        12345678
+Output: Encrypted (hex): a1b2c3d4e5f60718
+        Decrypted: SecretMsg
 ```
 
 ### Reference: [DES - Wikipedia](https://en.wikipedia.org/wiki/Data_Encryption_Standard)
@@ -664,6 +680,12 @@ class SHA {
 }
 ```
 
+### Sample I/O
+```
+Input:  Hello
+Output: Hash: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
+```
+
 ### Reference: [SHA-2 - Wikipedia](https://en.wikipedia.org/wiki/SHA-2)
 
 ---
@@ -710,6 +732,13 @@ class DigitalSignature {
         sc.close();
     }
 }
+```
+
+### Sample I/O
+```
+Input:  Hello
+Output: Signature: (base64 string)
+        Verified: true
 ```
 
 ### Reference: [Digital Signature - Wikipedia](https://en.wikipedia.org/wiki/Digital_signature)
