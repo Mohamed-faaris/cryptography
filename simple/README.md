@@ -589,46 +589,47 @@ Output: Public Key A: 8, Public Key B: 19, Secret: 2
 ### Code Explanation
 
 ```
-1. Take two primes p and q from user
-2. Compute n = p * q, phi = (p-1)(q-1)
-3. Find e such that gcd(e, phi) = 1 (e = 3,5,7...)
-4. Compute d = e^-1 mod phi
-5. Public key: (n, e), Private key: (n, d)
-6. Encrypt: C = M^e mod n
-7. Decrypt: M = C^d mod n
+1. Take message from user
+2. Generate RSA key pair using KeyPairGenerator (2048 bits)
+3. Use built-in Cipher class for encryption
+4. Decrypt using private key
 ```
 
 ### Code
 
 ```java
-import java.math.BigInteger;
 import java.util.Scanner;
+import java.security.*;
+import javax.crypto.Cipher;
 
 class RSA {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter p: ");
-        BigInteger p = sc.nextBigInteger();
-        System.out.print("Enter q: ");
-        BigInteger q = sc.nextBigInteger();
 
-        BigInteger n = p.multiply(q);
-        BigInteger phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
+        System.out.print("Enter message: ");
+        String msg = sc.nextLine();
 
-        BigInteger e = new BigInteger("3");
-        while (!phi.gcd(e).equals(BigInteger.ONE)) e = e.add(BigInteger.ONE);
+        KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
+        kpg.initialize(2048);
+        KeyPair kp = kpg.generateKeyPair();
 
-        BigInteger d = e.modInverse(phi);
-        System.out.println("\nn=" + n + ", e=" + e + ", d=" + d);
+        Cipher cipher = Cipher.getInstance("RSA");
+        cipher.init(Cipher.ENCRYPT_MODE, kp.getPublic());
+        byte[] enc = cipher.doFinal(msg.getBytes());
 
-        System.out.print("Enter message (number): ");
-        BigInteger msg = sc.nextBigInteger();
-        BigInteger enc = msg.modPow(e, n);
-        BigInteger dec = enc.modPow(d, n);
+        cipher.init(Cipher.DECRYPT_MODE, kp.getPrivate());
+        byte[] dec = cipher.doFinal(enc);
 
-        System.out.println("Encrypted: " + enc);
-        System.out.println("Decrypted: " + dec);
+        System.out.println("Encrypted: " + bytesToHex(enc));
+        System.out.println("Decrypted: " + new String(dec));
+
         sc.close();
+    }
+
+    static String bytesToHex(byte[] b) {
+        StringBuilder sb = new StringBuilder();
+        for (byte val : b) sb.append(String.format("%02x", val));
+        return sb.toString();
     }
 }
 ```
@@ -636,8 +637,9 @@ class RSA {
 ### Sample I/O
 
 ```
-Input: p=3, q=11, message=5
-Output: Encrypted: 26, Decrypted: 5
+Input:  Hello
+Output: Encrypted: a8b9c0d1e2f3...
+        Decrypted: Hello
 ```
 
 ### Reference: [RSA - Wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem))

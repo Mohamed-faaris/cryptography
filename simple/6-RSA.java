@@ -1,39 +1,34 @@
-import java.math.BigInteger;
 import java.util.Scanner;
+import java.security.*;
+import javax.crypto.Cipher;
 
 class RSA {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter p: ");
-        BigInteger p = sc.nextBigInteger();
+        System.out.print("Enter message: ");
+        String msg = sc.nextLine();
 
-        System.out.print("Enter q: ");
-        BigInteger q = sc.nextBigInteger();
+        KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
+        kpg.initialize(2048);
+        KeyPair kp = kpg.generateKeyPair();
 
-        BigInteger n = p.multiply(q);
-        BigInteger phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
+        Cipher cipher = Cipher.getInstance("RSA");
+        cipher.init(Cipher.ENCRYPT_MODE, kp.getPublic());
+        byte[] enc = cipher.doFinal(msg.getBytes());
 
-        BigInteger e = new BigInteger("3");
-        while (!phi.gcd(e).equals(BigInteger.ONE)) {
-            e = e.add(BigInteger.ONE);
-        }
+        cipher.init(Cipher.DECRYPT_MODE, kp.getPrivate());
+        byte[] dec = cipher.doFinal(enc);
 
-        BigInteger d = e.modInverse(phi);
-
-        System.out.println("\nn = " + n);
-        System.out.println("e = " + e);
-        System.out.println("d = " + d);
-
-        System.out.print("\nEnter message (number): ");
-        BigInteger msg = sc.nextBigInteger();
-
-        BigInteger enc = msg.modPow(e, n);
-        BigInteger dec = enc.modPow(d, n);
-
-        System.out.println("Encrypted: " + enc);
-        System.out.println("Decrypted: " + dec);
+        System.out.println("Encrypted: " + bytesToHex(enc));
+        System.out.println("Decrypted: " + new String(dec));
 
         sc.close();
+    }
+
+    static String bytesToHex(byte[] b) {
+        StringBuilder sb = new StringBuilder();
+        for (byte val : b) sb.append(String.format("%02x", val));
+        return sb.toString();
     }
 }
