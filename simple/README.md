@@ -449,6 +449,7 @@ class AES {
 ```
 
 ### Sample I/O
+
 ```
 Input:  Hello World
         mysecretkey12345
@@ -505,6 +506,7 @@ class DES {
 ```
 
 ### Sample I/O
+
 ```
 Input:  SecretMsg
         12345678
@@ -667,6 +669,7 @@ class SHA {
 ```
 
 ### Sample I/O
+
 ```
 Input:  Hello
 Output: Hash: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
@@ -721,6 +724,7 @@ class DigitalSignature {
 ```
 
 ### Sample I/O
+
 ```
 Input:  Hello
 Output: Signature: (base64 string)
