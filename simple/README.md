@@ -20,7 +20,7 @@ Simplest implementations of classical and modern cryptographic algorithms.
 ### Code
 
 ```java
-import java.util.Scanner;
+import java.util.*;
 
 class CaesarCipher {
     public static void main(String[] args) {
@@ -82,7 +82,7 @@ Output: Encrypted: KHOOR, Decrypted: HELLO
 ### Code
 
 ```java
-import java.util.Scanner;
+import java.util.*;
 
 class PlayfairCipher {
     static char[][] keyMatrix = new char[5][5];
@@ -181,7 +181,7 @@ Output: Encrypted: FCSMCS, Decrypted: HELLO
 ### Code
 
 ```java
-import java.util.Scanner;
+import java.util.*;
 
 class HillCipher {
     static int mod26(int x) { x = x % 26; if (x < 0) x += 26; return x; }
@@ -247,7 +247,7 @@ Output: Encrypted: TC, Decrypted: HI
 ### Code
 
 ```java
-import java.util.Scanner;
+import java.util.*;
 
 class VigenereCipher {
     public static void main(String[] args) {
@@ -304,7 +304,7 @@ Output: Encrypted: RIJVS, Decrypted: HELLO
 ### Code
 
 ```java
-import java.util.Scanner;
+import java.util.*;
 
 class RailFence {
     public static void main(String[] args) {
@@ -360,7 +360,7 @@ Output: Encrypted: HOLEL
 ### Code
 
 ```java
-import java.util.Scanner;
+import java.util.*;
 
 class RowColumn {
     public static void main(String[] args) {
@@ -533,7 +533,7 @@ Output: Encrypted (hex): a1b2c3d4e5f60718
 
 ```java
 import java.math.BigInteger;
-import java.util.Scanner;
+import java.util.*;
 
 class DiffieHellman {
     public static void main(String[] args) {
@@ -647,7 +647,7 @@ Output: Encrypted: a8b9c0d1e2f3...
 
 ```java
 import java.security.MessageDigest;
-import java.util.Scanner;
+import java.util.*;
 
 class SHA {
     public static void main(String[] args) throws Exception {
@@ -693,7 +693,7 @@ Output: Hash: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
 ```java
 import java.security.*;
 import java.util.Base64;
-import java.util.Scanner;
+import java.util.*;
 
 class DigitalSignature {
     public static void main(String[] args) throws Exception {
