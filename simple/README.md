@@ -578,6 +578,52 @@ Output: Public Key A: 8, Public Key B: 19, Secret: 2
 
 ### Asymmetric Encryption
 
+### Second Version: HTML/JS (Main)
+
+> Pure math RSA is kept in the HTML file as a commented reference, but the page uses browser crypto.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSA - Web Crypto API</title>
+</head>
+<body>
+  <textarea id="msg">Hello</textarea>
+  <button id="run">Run RSA</button>
+  <pre id="out">Click Run RSA.</pre>
+
+  <script>
+    const out = document.getElementById('out');
+    const msg = document.getElementById('msg');
+    const run = document.getElementById('run');
+
+    function toBase64(bytes) {
+      let s = '';
+      for (const b of bytes) s += String.fromCharCode(b);
+      return btoa(s);
+    }
+
+    run.addEventListener('click', async () => {
+      const encoder = new TextEncoder();
+      const decoder = new TextDecoder();
+      const data = encoder.encode(msg.value);
+      const keyPair = await crypto.subtle.generateKey(
+        { name: 'RSA-OAEP', modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: 'SHA-256' },
+        true,
+        ['encrypt', 'decrypt']
+      );
+      const encrypted = await crypto.subtle.encrypt({ name: 'RSA-OAEP' }, keyPair.publicKey, data);
+      const decrypted = await crypto.subtle.decrypt({ name: 'RSA-OAEP' }, keyPair.privateKey, encrypted);
+      out.textContent = 'Encrypted (base64): ' + toBase64(new Uint8Array(encrypted)) + '\nDecrypted: ' + decoder.decode(decrypted);
+    });
+  </script>
+</body>
+</html>
+```
+
 ### Code Explanation
 
 ```

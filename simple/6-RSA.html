@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSA - Web Crypto API</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 24px auto; padding: 0 16px; }
+    textarea, button { width: 100%; padding: 10px; margin: 8px 0 14px; box-sizing: border-box; }
+    textarea { min-height: 100px; }
+    pre { background: #f5f5f5; padding: 12px; overflow-x: auto; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>RSA</h1>
+  <p>Simple RSA using built-in browser crypto. No install, no internet, no library.</p>
+
+  <textarea id="msg">Hello</textarea>
+  <button id="run">Run RSA</button>
+  <pre id="out">Click Run RSA.</pre>
+
+  <!--
+    Pure math RSA reference only.
+    Kept here for study, but not used by the page.
+
+    function modPow(base, exp, mod) {
+      let result = 1n;
+      base %= mod;
+      while (exp > 0n) {
+        if (exp % 2n === 1n) result = (result * base) % mod;
+        base = (base * base) % mod;
+        exp /= 2n;
+      }
+      return result;
+    }
+
+    function modInverse(e, phi) {
+      let t = 0n, newT = 1n;
+      let r = phi, newR = e;
+      while (newR !== 0n) {
+        const q = r / newR;
+        [t, newT] = [newT, t - q * newT];
+        [r, newR] = [newR, r - q * newR];
+      }
+      if (r > 1n) return null;
+      if (t < 0n) t += phi;
+      return t;
+    }
+  -->
+
+  <script>
+    const out = document.getElementById('out');
+    const msg = document.getElementById('msg');
+    const run = document.getElementById('run');
+
+    function toBase64(bytes) {
+      let s = '';
+      for (const b of bytes) s += String.fromCharCode(b);
+      return btoa(s);
+    }
+
+    function fromBase64(b64) {
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return bytes;
+    }
+
+    run.addEventListener('click', async () => {
+      try {
+        // Encode text before encryption.
+        const encoder = new TextEncoder();
+        const decoder = new TextDecoder();
+        const data = encoder.encode(msg.value);
+
+        // Generate a fresh RSA key pair in the browser.
+        const keyPair = await crypto.subtle.generateKey(
+          {
+            name: 'RSA-OAEP',
+            modulusLength: 2048,
+            publicExponent: new Uint8Array([1, 0, 1]),
+            hash: 'SHA-256'
+          },
+          true,
+          ['encrypt', 'decrypt']
+        );
+
+        // Encrypt with the public key.
+        const encrypted = await crypto.subtle.encrypt(
+          { name: 'RSA-OAEP' },
+          keyPair.publicKey,
+          data
+        );
+
+        // Decrypt with the private key to verify.
+        const decrypted = await crypto.subtle.decrypt(
+          { name: 'RSA-OAEP' },
+          keyPair.privateKey,
+          encrypted
+        );
+
+        out.textContent =
+          'Encrypted (base64): ' + toBase64(new Uint8Array(encrypted)) + '\n' +
+          'Decrypted: ' + decoder.decode(decrypted);
+      } catch (err) {
+        out.textContent = 'Error: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
