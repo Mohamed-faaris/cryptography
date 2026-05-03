@@ -15,26 +15,28 @@ class PlayfairCipher {
         return null;
     }
 
-    static String solve(String text) {
-        int[] p1 = find(text.charAt(0));
-        int[] p2 = find(text.charAt(1));
-
-        if (p1[0] == p2[0]) {
-            return "" + key[p1[0]][(p1[1] + 1) % 5] + key[p2[0]][(p2[1] + 1) % 5];
+    static String solve(String t) {
+        StringBuilder enc = new StringBuilder();
+        for (int i = 0; i < t.length(); i += 2) {
+            int[] p1 = find(t.charAt(i));
+            int[] p2 = find(t.charAt(i+1));
+            if (p1[0] == p2[0]) {
+                enc.append(key[p1[0]][(p1[1] + 1) % 5]);
+                enc.append(key[p2[0]][(p2[1] + 1) % 5]);
+            } else if (p1[1] == p2[1]) {
+                enc.append(key[(p1[0] + 1) % 5][p1[1]]);
+                enc.append(key[(p2[0] + 1) % 5][p2[1]]);
+            } else {
+                enc.append(key[p1[0]][p2[1]]);
+                enc.append(key[p2[0]][p1[1]]);
+            }
         }
-
-        if (p1[1] == p2[1]) {
-            return "" + key[(p1[0] + 1) % 5][p1[1]] + key[(p2[0] + 1) % 5][p2[1]];
-        }
-
-        return "" + key[p1[0]][p2[1]] + key[p2[0]][p1[1]];
+        return enc.toString();
     }
 
     public static void main(String[] args) {
-        String text = "HI";
-        String enc = solve(text);
-
-        System.out.println("Text: " + text);
-        System.out.println("Encrypted Text: " + enc);
+        String text = "HELLOWORLD";
+        if (text.length() % 2 != 0) text += 'X';
+        System.out.println(text + " -> " + solve(text));
     }
 }
