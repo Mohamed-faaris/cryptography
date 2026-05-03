@@ -1,14 +1,7 @@
-import java.util.Scanner;
-
 class RailFence {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter Text: ");
-        String text = sc.nextLine();
-
-        System.out.print("Enter Rails: ");
-        int rails = sc.nextInt();
+        String text = "WEAREDISCOVERED";
+        int rails = 3;
 
         if (rails < 2) rails = 2;
 
@@ -31,8 +24,7 @@ class RailFence {
             enc.append(rail[i]);
         }
 
+        System.out.println("Text: " + text);
         System.out.println("Encrypted: " + enc);
-
-        sc.close();
     }
 }

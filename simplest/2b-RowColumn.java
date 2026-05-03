@@ -1,17 +1,8 @@
-import java.util.Scanner;
-
 class RowColumn {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter Text: ");
-        String text = sc.nextLine();
-
-        System.out.print("Enter Rows: ");
-        int rows = sc.nextInt();
-
-        System.out.print("Enter Cols: ");
-        int cols = sc.nextInt();
+        String text = "HELLOWORLD";
+        int rows = 2;
+        int cols = 5;
 
         int len = rows * cols;
         while (text.length() < len) text += 'X';
@@ -33,8 +24,7 @@ class RowColumn {
             }
         }
 
+        System.out.println("Text: " + text);
         System.out.println("Encrypted: " + enc);
-
-        sc.close();
     }
 }

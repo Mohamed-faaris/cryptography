@@ -1,6 +1,6 @@
 import java.security.*;
 
-public class DSS {
+public class DigitalSignature {
     public static void main(String[] args) throws Exception {
 
         String msg = "Hi";

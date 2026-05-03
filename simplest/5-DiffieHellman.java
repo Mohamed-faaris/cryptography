@@ -1,21 +1,11 @@
 import java.math.BigInteger;
-import java.util.Scanner;
 
 class DiffieHellman {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter prime (p): ");
-        BigInteger p = sc.nextBigInteger();
-
-        System.out.print("Enter primitive root (g): ");
-        BigInteger g = sc.nextBigInteger();
-
-        System.out.print("Private key A: ");
-        BigInteger a = sc.nextBigInteger();
-
-        System.out.print("Private key B: ");
-        BigInteger b = sc.nextBigInteger();
+        BigInteger p = BigInteger.valueOf(23);
+        BigInteger g = BigInteger.valueOf(5);
+        BigInteger a = BigInteger.valueOf(6);
+        BigInteger b = BigInteger.valueOf(15);
 
         BigInteger A = g.modPow(a, p);
         BigInteger B = g.modPow(b, p);
@@ -28,7 +18,5 @@ class DiffieHellman {
 
         System.out.println("\nSecret Key A: " + keyA);
         System.out.println("Secret Key B: " + keyB);
-
-        sc.close();
     }
 }

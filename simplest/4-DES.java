@@ -3,18 +3,15 @@ import javax.crypto.SecretKey;
 import javax.crypto.KeyGenerator;
 
 import java.util.Base64;
-import java.util.Scanner;
 
 public class DES {
 	public static void main(String[] args) throws Exception {
-		Scanner s = new Scanner(System.in);
-		System.out.print("Enter Plain Text: ");
-		String plainText = s.nextLine();
+		String plainText = "Hello DES";
 
 		// Generate Secret Key
 		KeyGenerator keygen = KeyGenerator.getInstance("DES");
 		// KeyGenerator keygen = KeyGenerator.getInstance("AES");
-		keygen.init(128);
+		keygen.init(56);
 		SecretKey secret = keygen.generateKey();
 
 		// Create Cipher
@@ -33,8 +30,5 @@ public class DES {
 
 		System.out.println("Encrypted Text: " + encryptedText);
 		System.out.println("Decrypted Text: " + decryptedText);
-
-		s.close();
 	}
 }
-

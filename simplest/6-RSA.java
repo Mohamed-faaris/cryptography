@@ -4,10 +4,7 @@ import javax.crypto.*;
 
 class RSA {
     public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter message: ");
-        String msg = sc.nextLine();
+        String msg = "Hello RSA";
 
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
         kpg.initialize(2048);
@@ -22,7 +19,5 @@ class RSA {
 
         System.out.println("Encrypted: " + HexFormat.of().formatHex(enc));
         System.out.println("Decrypted: " + new String(dec));
-
-        sc.close();
     }
 }

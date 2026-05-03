@@ -1,14 +1,7 @@
-import java.util.Scanner;
-
 class VigenereCipher {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter Text: ");
-        String text = sc.nextLine().toUpperCase();
-
-        System.out.print("Enter Key: ");
-        String key = sc.nextLine().toUpperCase();
+        String text = "ATTACKATDAWN";
+        String key = "LEMON";
 
         StringBuilder enc = new StringBuilder();
 
@@ -33,7 +26,5 @@ class VigenereCipher {
 
         System.out.println("Encrypted: " + enc);
         System.out.println("Decrypted: " + dec);
-
-        sc.close();
     }
 }

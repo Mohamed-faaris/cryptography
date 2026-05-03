@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 class PlayfairCipher {
     static char[][] key = {
         {'M','O','N','A','R'},
@@ -17,15 +15,26 @@ class PlayfairCipher {
         return null;
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter two letters: ");
-        String text = sc.nextLine().toUpperCase();
-
+    static String solve(String text) {
         int[] p1 = find(text.charAt(0));
         int[] p2 = find(text.charAt(1));
 
-        System.out.println("Encrypted Text: " +
-                key[p1[0]][p2[1]] + key[p2[0]][p1[1]]);
+        if (p1[0] == p2[0]) {
+            return "" + key[p1[0]][(p1[1] + 1) % 5] + key[p2[0]][(p2[1] + 1) % 5];
+        }
+
+        if (p1[1] == p2[1]) {
+            return "" + key[(p1[0] + 1) % 5][p1[1]] + key[(p2[0] + 1) % 5][p2[1]];
+        }
+
+        return "" + key[p1[0]][p2[1]] + key[p2[0]][p1[1]];
+    }
+
+    public static void main(String[] args) {
+        String text = "HI";
+        String enc = solve(text);
+
+        System.out.println("Text: " + text);
+        System.out.println("Encrypted Text: " + enc);
     }
 }
