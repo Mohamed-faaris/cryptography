@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h3>RSA Demo</h3>
+
+<input id="msg" placeholder="Enter number">
+<button onclick="enc()">Encrypt</button>
+<button onclick="dec()">Decrypt</button>
+
+<p id="out"></p>
+
+<script>
+let n=33, e=3, d=7, c;
+
+function enc(){
+  let m = msg.value;
+  c = (m**e) % n;
+  out.innerHTML = "Encrypted: " + c;
+}
+
+function dec(){
+  out.innerHTML = "Decrypted: " + ((c**d) % n);
+}
+</script>
+
+</body>
+</html>
