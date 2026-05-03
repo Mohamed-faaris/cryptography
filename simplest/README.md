@@ -20,6 +20,11 @@ Files in `@simplest/`:
 
 ## 1a. Caesar Cipher
 
+```
+P = plaintext, K = key
+C = (P + K) % 26  (encrypt)
+P = (C - K) % 26  (decrypt)
+```
 ```java
 class CaesarCipher {
     public static void main(String[] args) {
@@ -58,6 +63,10 @@ class CaesarCipher {
 
 ## 1b. Playfair Cipher
 
+```
+5x5 matrix from key word
+Encrypt pairs: same row→right, same col→below, rectangle→swap columns
+```
 ```java
 class PlayfairCipher {
     static char[][] key = {
@@ -105,6 +114,10 @@ class PlayfairCipher {
 
 ## 1c. Hill Cipher
 
+```
+2x2 key matrix K
+C = K × P mod 26  (matrix × vector)
+```
 ```java
 class HillCipher {
     static int[][] key = {
@@ -133,6 +146,10 @@ class HillCipher {
 
 ## 1d. Vigenere Cipher
 
+```
+Repeat key to match plaintext length
+C = (P + K[i]) % 26
+```
 ```java
 class VigenereCipher {
     public static void main(String[] args) {
@@ -170,6 +187,10 @@ class VigenereCipher {
 
 ## 2a. Rail Fence
 
+```
+Write text in zigzag pattern across N rails
+Read row by row to get ciphertext
+```
 ```java
 class RailFence {
     public static void main(String[] args) {
@@ -207,6 +228,10 @@ class RailFence {
 
 ## 2b. Row Column
 
+```
+Fill matrix row-wise with plaintext
+Read column-wise for ciphertext
+```
 ```java
 class RowColumn {
     public static void main(String[] args) {
@@ -244,6 +269,10 @@ class RowColumn {
 
 ## 3. AES
 
+```
+AES-128: 128-bit key, symmetric block cipher
+Use javax.crypto.Cipher
+```
 ```java
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -279,6 +308,10 @@ public class AES {
 
 ## 4. DES
 
+```
+DES: 56-bit key, 64-bit block
+Use javax.crypto.Cipher
+```
 ```java
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -314,6 +347,10 @@ public class DES {
 
 ## 5. Diffie-Hellman
 
+```
+Public keys: A = g^a mod p, B = g^b mod p
+Shared secret: Key = B^a mod p = A^b mod p
+```
 ```java
 import java.math.BigInteger;
 
@@ -343,6 +380,11 @@ class DiffieHellman {
 
 ## 6. RSA (HTML)
 
+```
+n = p × q, φ = (p-1)(q-1)
+e × d ≡ 1 (mod φ)
+C = M^e mod n, M = C^d mod n
+```
 ```html
 <!DOCTYPE html>
 <html>
@@ -377,6 +419,10 @@ function dec(){
 
 ## 6. RSA (Java)
 
+```
+RSA-2048: KeyPairGenerator, Cipher.ENCRYPT_MODE
+C = RSA.encrypt(M), M = RSA.decrypt(C)
+```
 ```java
 import java.util.*;
 import java.security.*;
@@ -407,6 +453,10 @@ class RSA {
 
 ## 7. SHA-256
 
+```
+SHA-256: 256-bit hash
+MessageDigest.getInstance("SHA-256")
+```
 ```java
 import java.security.MessageDigest;
 
@@ -427,6 +477,10 @@ public class SHA {
 
 ## 8. Digital Signature
 
+```
+Sign with private key, verify with public key
+Signature.getInstance("SHA256withRSA")
+```
 ```java
 import java.security.*;
 
