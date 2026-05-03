@@ -553,4 +553,5 @@ sudo snort -i eth0 -A console -c /etc/snort/snort.conf
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y rkhunter
+sudo rkhunter --check
 ```
